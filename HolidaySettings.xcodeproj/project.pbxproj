@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F75E5C32D3D4701B1B1A001 /* HolidaySettingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E5B92D3D4701B1B1A001 /* HolidaySettingsApp.swift */; };
+		8F75E5C42D3D4701B1B1A001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E5BA2D3D4701B1B1A001 /* ContentView.swift */; };
+		8F75E5C52D3D4701B1B1A001 /* HolidayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E5BB2D3D4701B1B1A001 /* HolidayModels.swift */; };
+		8F75E5C62D3D4701B1B1A001 /* HolidayStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E5BC2D3D4701B1B1A001 /* HolidayStore.swift */; };
+		8F75E5C72D3D4701B1B1A001 /* CustomHolidayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E5BD2D3D4701B1B1A001 /* CustomHolidayEditor.swift */; };
+		8F75E5C82D3D4701B1B1A001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F75E5BE2D3D4701B1B1A001 /* Assets.xcassets */; };
+		8F75E5C92D3D4701B1B1A001 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F75E5BF2D3D4701B1B1A001 /* Preview Assets.xcassets */; };
+		8F75E7012D3D4701B1B1A001 /* AlarmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E7002D3D4701B1B1A001 /* AlarmModels.swift */; };
+		8F75E7032D3D4701B1B1A001 /* HolidayDateResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E7022D3D4701B1B1A001 /* HolidayDateResolver.swift */; };
+		8F75E7052D3D4701B1B1A001 /* AlarmKitScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E7042D3D4701B1B1A001 /* AlarmKitScheduler.swift */; };
+		8F75E7072D3D4701B1B1A001 /* AlarmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E7062D3D4701B1B1A001 /* AlarmStore.swift */; };
+		8F75E7092D3D4701B1B1A001 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E7082D3D4701B1B1A001 /* AlarmListView.swift */; };
+		8F75E70B2D3D4701B1B1A001 /* AlarmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E70A2D3D4701B1B1A001 /* AlarmEditorView.swift */; };
+		8F75E70D2D3D4701B1B1A001 /* OfficialHolidayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75E70C2D3D4701B1B1A001 /* OfficialHolidayCalendar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8F75E5A92D3D4701B1B1A001 /* HolidaySettings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidaySettings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F75E5B92D3D4701B1B1A001 /* HolidaySettingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySettingsApp.swift; sourceTree = "<group>"; };
+		8F75E5BA2D3D4701B1B1A001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8F75E5BB2D3D4701B1B1A001 /* HolidayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayModels.swift; sourceTree = "<group>"; };
+		8F75E5BC2D3D4701B1B1A001 /* HolidayStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayStore.swift; sourceTree = "<group>"; };
+		8F75E5BD2D3D4701B1B1A001 /* CustomHolidayEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHolidayEditor.swift; sourceTree = "<group>"; };
+		8F75E5BE2D3D4701B1B1A001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F75E5BF2D3D4701B1B1A001 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8F75E5C02D3D4701B1B1A001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F75E7002D3D4701B1B1A001 /* AlarmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModels.swift; sourceTree = "<group>"; };
+		8F75E7022D3D4701B1B1A001 /* HolidayDateResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateResolver.swift; sourceTree = "<group>"; };
+		8F75E7042D3D4701B1B1A001 /* AlarmKitScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmKitScheduler.swift; sourceTree = "<group>"; };
+		8F75E7062D3D4701B1B1A001 /* AlarmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStore.swift; sourceTree = "<group>"; };
+		8F75E7082D3D4701B1B1A001 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
+		8F75E70A2D3D4701B1B1A001 /* AlarmEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditorView.swift; sourceTree = "<group>"; };
+		8F75E70C2D3D4701B1B1A001 /* OfficialHolidayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialHolidayCalendar.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F75E5962D3D4701B1B1A001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F75E58B2D3D4701B1B1A001 = {
+			isa = PBXGroup;
+			children = (
+				8F75E5B82D3D4701B1B1A001 /* HolidaySettings */,
+				8F75E5A82D3D4701B1B1A001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F75E5A82D3D4701B1B1A001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F75E5A92D3D4701B1B1A001 /* HolidaySettings.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F75E5B82D3D4701B1B1A001 /* HolidaySettings */ = {
+			isa = PBXGroup;
+			children = (
+				8F75E5B92D3D4701B1B1A001 /* HolidaySettingsApp.swift */,
+				8F75E5BA2D3D4701B1B1A001 /* ContentView.swift */,
+				8F75E7082D3D4701B1B1A001 /* AlarmListView.swift */,
+				8F75E70A2D3D4701B1B1A001 /* AlarmEditorView.swift */,
+				8F75E7002D3D4701B1B1A001 /* AlarmModels.swift */,
+				8F75E7062D3D4701B1B1A001 /* AlarmStore.swift */,
+				8F75E7042D3D4701B1B1A001 /* AlarmKitScheduler.swift */,
+				8F75E5BB2D3D4701B1B1A001 /* HolidayModels.swift */,
+				8F75E70C2D3D4701B1B1A001 /* OfficialHolidayCalendar.swift */,
+				8F75E5BC2D3D4701B1B1A001 /* HolidayStore.swift */,
+				8F75E7022D3D4701B1B1A001 /* HolidayDateResolver.swift */,
+				8F75E5BD2D3D4701B1B1A001 /* CustomHolidayEditor.swift */,
+				8F75E5BE2D3D4701B1B1A001 /* Assets.xcassets */,
+				8F75E5C12D3D4701B1B1A001 /* Preview Content */,
+				8F75E5C02D3D4701B1B1A001 /* Info.plist */,
+			);
+			path = HolidaySettings;
+			sourceTree = "<group>";
+		};
+		8F75E5C12D3D4701B1B1A001 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8F75E5BF2D3D4701B1B1A001 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F75E5A02D3D4701B1B1A001 /* HolidaySettings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F75E5D52D3D4701B1B1A001 /* Build configuration list for PBXNativeTarget "HolidaySettings" */;
+			buildPhases = (
+				8F75E5952D3D4701B1B1A001 /* Sources */,
+				8F75E5962D3D4701B1B1A001 /* Frameworks */,
+				8F75E5972D3D4701B1B1A001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HolidaySettings;
+			productName = HolidaySettings;
+			productReference = 8F75E5A92D3D4701B1B1A001 /* HolidaySettings.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F75E58C2D3D4701B1B1A001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					8F75E5A02D3D4701B1B1A001 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = 8F75E58F2D3D4701B1B1A001 /* Build configuration list for PBXProject "HolidaySettings" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F75E58B2D3D4701B1B1A001;
+			productRefGroup = 8F75E5A82D3D4701B1B1A001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F75E5A02D3D4701B1B1A001 /* HolidaySettings */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F75E5972D3D4701B1B1A001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F75E5C82D3D4701B1B1A001 /* Assets.xcassets in Resources */,
+				8F75E5C92D3D4701B1B1A001 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F75E5952D3D4701B1B1A001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F75E5C32D3D4701B1B1A001 /* HolidaySettingsApp.swift in Sources */,
+				8F75E5C42D3D4701B1B1A001 /* ContentView.swift in Sources */,
+				8F75E5C52D3D4701B1B1A001 /* HolidayModels.swift in Sources */,
+				8F75E5C62D3D4701B1B1A001 /* HolidayStore.swift in Sources */,
+				8F75E5C72D3D4701B1B1A001 /* CustomHolidayEditor.swift in Sources */,
+				8F75E7012D3D4701B1B1A001 /* AlarmModels.swift in Sources */,
+				8F75E7032D3D4701B1B1A001 /* HolidayDateResolver.swift in Sources */,
+				8F75E7052D3D4701B1B1A001 /* AlarmKitScheduler.swift in Sources */,
+				8F75E7072D3D4701B1B1A001 /* AlarmStore.swift in Sources */,
+				8F75E7092D3D4701B1B1A001 /* AlarmListView.swift in Sources */,
+				8F75E70B2D3D4701B1B1A001 /* AlarmEditorView.swift in Sources */,
+				8F75E70D2D3D4701B1B1A001 /* OfficialHolidayCalendar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8F75E5D12D3D4701B1B1A001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4257SFGRFK;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8F75E5D22D3D4701B1B1A001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4257SFGRFK;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F75E5D62D3D4701B1B1A001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+				buildSettings = {
+					ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+					CODE_SIGN_STYLE = Automatic;
+					CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HolidaySettings/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = HolidaySettings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samxiao.HolidaySettings;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = APPL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8F75E5D72D3D4701B1B1A001 /* Release */ = {
+			isa = XCBuildConfiguration;
+				buildSettings = {
+					ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+					CODE_SIGN_STYLE = Automatic;
+					CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HolidaySettings/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = HolidaySettings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samxiao.HolidaySettings;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = APPL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F75E58F2D3D4701B1B1A001 /* Build configuration list for PBXProject "HolidaySettings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F75E5D12D3D4701B1B1A001 /* Debug */,
+				8F75E5D22D3D4701B1B1A001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F75E5D52D3D4701B1B1A001 /* Build configuration list for PBXNativeTarget "HolidaySettings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F75E5D62D3D4701B1B1A001 /* Debug */,
+				8F75E5D72D3D4701B1B1A001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F75E58C2D3D4701B1B1A001 /* Project object */;
+}
