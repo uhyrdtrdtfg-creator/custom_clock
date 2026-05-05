@@ -185,10 +185,6 @@ struct HolidayDateResolver {
             return month == 4 && day == qingmingDay(for: year)
         }
 
-        if holiday.id == "new-years-eve" {
-            return isChineseNewYearsEve(on: date)
-        }
-
         switch holiday.dateRule.calendar {
         case .solar:
             guard let expectedDay = holiday.dateRule.day else { return false }

@@ -53,7 +53,7 @@ final class AlarmStore: ObservableObject {
                 statusMessage = makeStatusMessage(for: result.alarm, outcome: result.outcome)
             case .failure(let error):
                 statusMessage = error.localizedDescription
-                if existing == nil || existing?.isEnabled == false {
+                if previousOccurrenceIDs.isEmpty {
                     alarm.isEnabled = false
                     replace(alarm)
                 }

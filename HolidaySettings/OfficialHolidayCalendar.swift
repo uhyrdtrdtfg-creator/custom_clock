@@ -129,6 +129,7 @@ enum OfficialHolidayCalendar {
         var yearIDs: Set<Int> = []
         var periodIDs: Set<String> = []
         var makeupDateKeys: Set<String> = []
+        let supportedHolidayIDs = Set(ChinaHoliday.builtIn.map(\.id))
 
         for schedule in schedules {
             guard yearIDs.insert(schedule.year).inserted else { return false }
@@ -137,6 +138,7 @@ enum OfficialHolidayCalendar {
                 guard
                     periodIDs.insert(period.id).inserted,
                     period.holidayIDs.isEmpty == false,
+                    period.holidayIDs.isSubset(of: supportedHolidayIDs),
                     isValidDateKey(period.startDateKey),
                     isValidDateKey(period.endDateKey),
                     period.startDateKey <= period.endDateKey
@@ -179,9 +181,14 @@ enum OfficialHolidayCalendar {
     }
 
     private static func date(from dateKey: String) -> Date? {
+        guard dateKey.count == 10 else { return nil }
+
         let parts = dateKey.split(separator: "-")
         guard
             parts.count == 3,
+            parts[0].count == 4,
+            parts[1].count == 2,
+            parts[2].count == 2,
             let year = Int(parts[0]),
             let month = Int(parts[1]),
             let day = Int(parts[2])
@@ -189,66 +196,21 @@ enum OfficialHolidayCalendar {
             return nil
         }
 
-        return gregorianCalendar.date(from: DateComponents(year: year, month: month, day: day))
+        guard
+            let date = gregorianCalendar.date(from: DateComponents(year: year, month: month, day: day))
+        else {
+            return nil
+        }
+
+        let components = gregorianCalendar.dateComponents([.year, .month, .day], from: date)
+        guard components.year == year, components.month == month, components.day == day else {
+            return nil
+        }
+
+        return date
     }
 
     private static let fallbackSchedules: [OfficialHolidayYear] = [
-        OfficialHolidayYear(
-            year: 2025,
-            noticeTitle: "国务院办公厅关于2025年部分节假日安排的通知",
-            noticeURL: "https://www.gov.cn/zhengce/content/202411/content_6986382.htm",
-            periods: [
-                OfficialHolidayPeriod(
-                    id: "2025-new-year",
-                    holidayIDs: ["new-year"],
-                    name: "元旦",
-                    startDateKey: "2025-01-01",
-                    endDateKey: "2025-01-01"
-                ),
-                OfficialHolidayPeriod(
-                    id: "2025-spring-festival",
-                    holidayIDs: ["spring-festival"],
-                    name: "春节",
-                    startDateKey: "2025-01-28",
-                    endDateKey: "2025-02-04"
-                ),
-                OfficialHolidayPeriod(
-                    id: "2025-qingming",
-                    holidayIDs: ["qingming"],
-                    name: "清明节",
-                    startDateKey: "2025-04-04",
-                    endDateKey: "2025-04-06"
-                ),
-                OfficialHolidayPeriod(
-                    id: "2025-labor-day",
-                    holidayIDs: ["labor-day"],
-                    name: "劳动节",
-                    startDateKey: "2025-05-01",
-                    endDateKey: "2025-05-05"
-                ),
-                OfficialHolidayPeriod(
-                    id: "2025-dragon-boat",
-                    holidayIDs: ["dragon-boat"],
-                    name: "端午节",
-                    startDateKey: "2025-05-31",
-                    endDateKey: "2025-06-02"
-                ),
-                OfficialHolidayPeriod(
-                    id: "2025-national-day-mid-autumn",
-                    holidayIDs: ["national-day", "mid-autumn"],
-                    name: "国庆节、中秋节",
-                    startDateKey: "2025-10-01",
-                    endDateKey: "2025-10-08"
-                )
-            ],
-            makeupWorkdays: [
-                OfficialMakeupWorkday(dateKey: "2025-01-26", reason: "春节调休"),
-                OfficialMakeupWorkday(dateKey: "2025-02-08", reason: "春节调休"),
-                OfficialMakeupWorkday(dateKey: "2025-04-27", reason: "劳动节调休"),
-                OfficialMakeupWorkday(dateKey: "2025-09-28", reason: "国庆节、中秋节调休"),
-                OfficialMakeupWorkday(dateKey: "2025-10-11", reason: "国庆节、中秋节调休")
-            ]
-        ),
         OfficialHolidayYear(
             year: 2026,
             noticeTitle: "国务院办公厅关于2026年部分节假日安排的通知",

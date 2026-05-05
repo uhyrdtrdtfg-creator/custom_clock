@@ -31,7 +31,7 @@ final class HolidayDateResolverTests: XCTestCase {
             skipsSelectedHolidays: true,
             isEnabled: true
         )
-        let now = try makeDate("2025-12-31")
+        let now = try makeDate("2026-01-01")
 
         let skippedPlan = AlarmKitScheduler.makePlan(
             for: alarm,
