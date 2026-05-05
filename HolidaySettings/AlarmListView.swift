@@ -48,7 +48,7 @@ struct AlarmListView: View {
                             }
                         }
                     } footer: {
-                        Text("启用后会用 iOS 26 AlarmKit 预先排入未来 90 天的系统闹钟，节日当天不会排入。")
+                        Text("启用后会用 iOS 26.1 AlarmKit 预先排入未来 90 天的系统闹钟，节日当天不会排入。")
                     }
                 }
             }

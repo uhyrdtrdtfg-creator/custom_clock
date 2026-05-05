@@ -1,0 +1,122 @@
+[
+  {
+    "year": 2025,
+    "noticeTitle": "国务院办公厅关于2025年部分节假日安排的通知",
+    "noticeURL": "https://www.gov.cn/zhengce/content/202411/content_6986382.htm",
+    "periods": [
+      {
+        "id": "2025-new-year",
+        "holidayIDs": ["new-year"],
+        "name": "元旦",
+        "startDateKey": "2025-01-01",
+        "endDateKey": "2025-01-01"
+      },
+      {
+        "id": "2025-spring-festival",
+        "holidayIDs": ["spring-festival"],
+        "name": "春节",
+        "startDateKey": "2025-01-28",
+        "endDateKey": "2025-02-04"
+      },
+      {
+        "id": "2025-qingming",
+        "holidayIDs": ["qingming"],
+        "name": "清明节",
+        "startDateKey": "2025-04-04",
+        "endDateKey": "2025-04-06"
+      },
+      {
+        "id": "2025-labor-day",
+        "holidayIDs": ["labor-day"],
+        "name": "劳动节",
+        "startDateKey": "2025-05-01",
+        "endDateKey": "2025-05-05"
+      },
+      {
+        "id": "2025-dragon-boat",
+        "holidayIDs": ["dragon-boat"],
+        "name": "端午节",
+        "startDateKey": "2025-05-31",
+        "endDateKey": "2025-06-02"
+      },
+      {
+        "id": "2025-national-day-mid-autumn",
+        "holidayIDs": ["national-day", "mid-autumn"],
+        "name": "国庆节、中秋节",
+        "startDateKey": "2025-10-01",
+        "endDateKey": "2025-10-08"
+      }
+    ],
+    "makeupWorkdays": [
+      { "dateKey": "2025-01-26", "reason": "春节调休" },
+      { "dateKey": "2025-02-08", "reason": "春节调休" },
+      { "dateKey": "2025-04-27", "reason": "劳动节调休" },
+      { "dateKey": "2025-09-28", "reason": "国庆节、中秋节调休" },
+      { "dateKey": "2025-10-11", "reason": "国庆节、中秋节调休" }
+    ]
+  },
+  {
+    "year": 2026,
+    "noticeTitle": "国务院办公厅关于2026年部分节假日安排的通知",
+    "noticeURL": "https://www.gov.cn/zhengce/content/202511/content_7047090.htm",
+    "periods": [
+      {
+        "id": "2026-new-year",
+        "holidayIDs": ["new-year"],
+        "name": "元旦",
+        "startDateKey": "2026-01-01",
+        "endDateKey": "2026-01-03"
+      },
+      {
+        "id": "2026-spring-festival",
+        "holidayIDs": ["spring-festival"],
+        "name": "春节",
+        "startDateKey": "2026-02-15",
+        "endDateKey": "2026-02-23"
+      },
+      {
+        "id": "2026-qingming",
+        "holidayIDs": ["qingming"],
+        "name": "清明节",
+        "startDateKey": "2026-04-04",
+        "endDateKey": "2026-04-06"
+      },
+      {
+        "id": "2026-labor-day",
+        "holidayIDs": ["labor-day"],
+        "name": "劳动节",
+        "startDateKey": "2026-05-01",
+        "endDateKey": "2026-05-05"
+      },
+      {
+        "id": "2026-dragon-boat",
+        "holidayIDs": ["dragon-boat"],
+        "name": "端午节",
+        "startDateKey": "2026-06-19",
+        "endDateKey": "2026-06-21"
+      },
+      {
+        "id": "2026-mid-autumn",
+        "holidayIDs": ["mid-autumn"],
+        "name": "中秋节",
+        "startDateKey": "2026-09-25",
+        "endDateKey": "2026-09-27"
+      },
+      {
+        "id": "2026-national-day",
+        "holidayIDs": ["national-day"],
+        "name": "国庆节",
+        "startDateKey": "2026-10-01",
+        "endDateKey": "2026-10-07"
+      }
+    ],
+    "makeupWorkdays": [
+      { "dateKey": "2026-01-04", "reason": "元旦调休" },
+      { "dateKey": "2026-02-14", "reason": "春节调休" },
+      { "dateKey": "2026-02-28", "reason": "春节调休" },
+      { "dateKey": "2026-05-09", "reason": "劳动节调休" },
+      { "dateKey": "2026-09-20", "reason": "国庆节调休" },
+      { "dateKey": "2026-10-10", "reason": "国庆节调休" }
+    ]
+  }
+]

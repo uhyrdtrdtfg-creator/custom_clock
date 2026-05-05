@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var store: HolidayStore
     @EnvironmentObject private var alarmStore: AlarmStore
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var scheduleRefreshTask: Task<Void, Never>?
 
     var body: some View {
         TabView {
@@ -16,41 +18,50 @@ struct ContentView: View {
                     Label("法定节假日", systemImage: "calendar")
                 }
         }
-        .onChange(of: store.selectedHolidayIDs) {
-            Task {
-                await alarmStore.refreshSchedules(
-                    skipping: store.selectedHolidays,
-                    spanDaysByID: store.holidaySpanDaysByID,
-                    makeupWorkDateKeys: store.makeupWorkDateKeys
-                )
+        .onAppear {
+            refreshSchedulesIfNeeded()
+        }
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
+                refreshSchedulesIfNeeded()
             }
         }
-        .onChange(of: store.customHolidays) {
-            Task {
-                await alarmStore.refreshSchedules(
-                    skipping: store.selectedHolidays,
-                    spanDaysByID: store.holidaySpanDaysByID,
-                    makeupWorkDateKeys: store.makeupWorkDateKeys
-                )
-            }
+        .onChange(of: store.scheduleSnapshot) {
+            queueScheduleRefresh()
         }
-        .onChange(of: store.holidaySpanDaysByID) {
-            Task {
-                await alarmStore.refreshSchedules(
-                    skipping: store.selectedHolidays,
-                    spanDaysByID: store.holidaySpanDaysByID,
-                    makeupWorkDateKeys: store.makeupWorkDateKeys
-                )
-            }
+        .onDisappear {
+            scheduleRefreshTask?.cancel()
         }
-        .onChange(of: store.makeupWorkDateKeys) {
-            Task {
-                await alarmStore.refreshSchedules(
-                    skipping: store.selectedHolidays,
-                    spanDaysByID: store.holidaySpanDaysByID,
-                    makeupWorkDateKeys: store.makeupWorkDateKeys
-                )
-            }
+    }
+
+    private func queueScheduleRefresh() {
+        scheduleRefreshTask?.cancel()
+        let holidays = store.selectedHolidays
+        let spanDaysByID = store.holidaySpanDaysByID
+        let makeupWorkDateKeys = store.makeupWorkDateKeys
+
+        scheduleRefreshTask = Task {
+            try? await Task.sleep(nanoseconds: 350_000_000)
+            guard !Task.isCancelled else { return }
+            await alarmStore.refreshSchedules(
+                skipping: holidays,
+                spanDaysByID: spanDaysByID,
+                makeupWorkDateKeys: makeupWorkDateKeys
+            )
+        }
+    }
+
+    private func refreshSchedulesIfNeeded() {
+        let holidays = store.selectedHolidays
+        let spanDaysByID = store.holidaySpanDaysByID
+        let makeupWorkDateKeys = store.makeupWorkDateKeys
+
+        Task {
+            await alarmStore.refreshSchedulesIfNeeded(
+                skipping: holidays,
+                spanDaysByID: spanDaysByID,
+                makeupWorkDateKeys: makeupWorkDateKeys
+            )
         }
     }
 }

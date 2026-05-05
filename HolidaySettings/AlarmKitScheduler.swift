@@ -33,7 +33,7 @@ enum AlarmSchedulingError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .unavailable:
-            return "当前环境不支持 iOS 26 AlarmKit。请在 Xcode 26 和 iOS 26 设备上运行。"
+            return "当前环境不支持 iOS 26.1 AlarmKit。请在 Xcode 26 和 iOS 26.1 或更高版本设备上运行。"
         case .notAuthorized:
             return "没有获得闹钟权限，无法调度系统闹钟。"
         }
@@ -53,13 +53,13 @@ enum AlarmKitScheduler {
         calendar: Calendar = .autoupdatingCurrent
     ) -> AlarmSchedulePlan {
         let resolver = HolidayDateResolver(calendar: calendar)
-        let coverageThrough = calendar.date(byAdding: .day, value: horizonDays, to: now) ?? now
+        let requestedCoverageThrough = calendar.date(byAdding: .day, value: horizonDays, to: now) ?? now
         let holidaysByDate = alarm.skipsSelectedHolidays
             ? Dictionary(
                 grouping: resolver.occurrences(
                     for: holidays,
                     from: now,
-                    through: coverageThrough,
+                    through: requestedCoverageThrough,
                     spanDaysByID: spanDaysByID
                 ),
                 by: \.dateKey
@@ -69,8 +69,10 @@ enum AlarmKitScheduler {
         var fireDates: [Date] = []
         var skippedOccurrences: [HolidayOccurrence] = []
         var date = calendar.startOfDay(for: now)
+        var actualCoverageThrough = date
 
-        while date <= coverageThrough && fireDates.count < maxScheduledOccurrences {
+        while date <= requestedCoverageThrough && fireDates.count < maxScheduledOccurrences {
+            actualCoverageThrough = date
             let weekday = calendar.component(.weekday, from: date)
             if
                 let alarmWeekday = AlarmWeekday.from(calendarWeekday: weekday),
@@ -99,13 +101,13 @@ enum AlarmKitScheduler {
         return AlarmSchedulePlan(
             fireDates: fireDates,
             skippedHolidayOccurrences: skippedOccurrences,
-            coverageThrough: coverageThrough
+            coverageThrough: actualCoverageThrough
         )
     }
 
     static func requestAuthorization() async throws -> Bool {
         #if canImport(AlarmKit)
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.1, *) {
             let state = try await AlarmManager.shared.requestAuthorization()
             return state == .authorized
         }
@@ -134,16 +136,23 @@ enum AlarmKitScheduler {
             calendar: calendar
         )
         var scheduledIDs: [UUID] = []
+        var scheduledDates: [Date] = []
 
-        for fireDate in plan.fireDates {
-            let occurrenceID = UUID()
-            try await scheduleOccurrence(id: occurrenceID, alarm: alarm, fireDate: fireDate)
-            scheduledIDs.append(occurrenceID)
+        do {
+            for fireDate in plan.fireDates {
+                let occurrenceID = UUID()
+                try await scheduleOccurrence(id: occurrenceID, alarm: alarm, fireDate: fireDate)
+                scheduledIDs.append(occurrenceID)
+                scheduledDates.append(fireDate)
+            }
+        } catch {
+            try? await cancel(ids: scheduledIDs)
+            throw error
         }
 
         return AlarmScheduleOutcome(
             scheduledOccurrenceIDs: scheduledIDs,
-            scheduledDates: plan.fireDates,
+            scheduledDates: scheduledDates,
             skippedHolidayOccurrences: plan.skippedHolidayOccurrences,
             coverageThrough: plan.coverageThrough
         )
@@ -153,7 +162,7 @@ enum AlarmKitScheduler {
         guard !ids.isEmpty else { return }
 
         #if canImport(AlarmKit)
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.1, *) {
             for id in ids {
                 try? AlarmManager.shared.cancel(id: id)
             }
@@ -202,7 +211,7 @@ enum AlarmKitScheduler {
 }
 
 #if canImport(AlarmKit)
-@available(iOS 26.0, *)
+@available(iOS 26.1, *)
 private struct SmartAlarmMetadata: AlarmMetadata, Codable, Hashable, Sendable {
     let alarmID: String
     let title: String

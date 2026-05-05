@@ -72,7 +72,20 @@ final class HolidayStore: ObservableObject {
     }
 
     var officialCoverageText: String {
-        "官方数据覆盖 \(OfficialHolidayCalendar.supportedYearText)，无需手动选择节假日或补班日。"
+        if let noticeText = OfficialHolidayCalendar.coverageNoticeText() {
+            return noticeText
+        }
+
+        return "官方数据覆盖 \(OfficialHolidayCalendar.supportedYearText)，无需手动选择节假日或补班日。"
+    }
+
+    var scheduleSnapshot: HolidayScheduleSnapshot {
+        HolidayScheduleSnapshot(
+            selectedHolidayIDs: selectedHolidayIDs,
+            customHolidays: customHolidays,
+            holidaySpanDaysByID: holidaySpanDaysByID,
+            makeupWorkDateKeys: makeupWorkDateKeys
+        )
     }
 
     func binding(for holiday: ChinaHoliday) -> Bool {
@@ -125,26 +138,6 @@ final class HolidayStore: ObservableObject {
         makeupWorkDateKeys = OfficialHolidayCalendar.allMakeupWorkDateKeys
     }
 
-    func holidaySpanDays(for holiday: ChinaHoliday) -> Int {
-        holidaySpanDaysByID[holiday.id] ?? 1
-    }
-
-    func setHolidaySpanDays(for holiday: ChinaHoliday, days: Int) {
-        holidaySpanDaysByID[holiday.id] = max(1, min(15, days))
-    }
-
-    func addMakeupWorkDate(_ date: Date, calendar: Calendar = .autoupdatingCurrent) {
-        makeupWorkDateKeys.insert(Self.makeDateKey(for: date, calendar: calendar))
-    }
-
-    func removeMakeupWorkDateKey(_ key: String) {
-        makeupWorkDateKeys.remove(key)
-    }
-
-    var sortedMakeupWorkDateKeys: [String] {
-        makeupWorkDateKeys.sorted()
-    }
-
     func exportJSONString() -> String {
         let configuration = HolidayConfiguration(
             selectedHolidayIDs: selectedHolidayIDs.sorted(),
@@ -173,16 +166,13 @@ final class HolidayStore: ObservableObject {
         guard let data = try? JSONEncoder.holidayEncoder.encode(configuration) else { return }
         defaults.set(data, forKey: storageKey)
     }
+}
 
-    private static func makeDateKey(for date: Date, calendar: Calendar) -> String {
-        let components = calendar.dateComponents([.year, .month, .day], from: date)
-        return String(
-            format: "%04d-%02d-%02d",
-            components.year ?? 0,
-            components.month ?? 0,
-            components.day ?? 0
-        )
-    }
+struct HolidayScheduleSnapshot: Equatable {
+    var selectedHolidayIDs: Set<String>
+    var customHolidays: [ChinaHoliday]
+    var holidaySpanDaysByID: [String: Int]
+    var makeupWorkDateKeys: Set<String>
 }
 
 struct CustomHolidayDraft: Equatable, Identifiable {
